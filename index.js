@@ -37,14 +37,15 @@ console.log(d3);
 
 /* Task 2 */
 
-const a = 1;
+const a = 20;
 
-const b = 15;
+const b = 25;
 
-const c = 20;
+const c = 40;
 
 const d = [a, b, c];
 
+// eslint-disable-next-line func-names
 d.sort(function (a, b) {
     return b - a
 });
@@ -55,11 +56,11 @@ console.log('Отрезки с длинами:');
 
 console.log(a, b, c)
 
-if (d[1] ** 2 + d[2] ** 2 === d[0] ** 2) {
+/*  if (d[1] ** 2 + d[2] ** 2 === d[0] ** 2) {
     console.log('Удовлетворяют теореме Пифагора')
 } else {
     console.log('НЕ удовлетворяют теореме Пифагора')
-};
+};  */
 
 /* вариант с if
 if (a + b > c && a + c > b && c + b > a) {
@@ -68,7 +69,10 @@ if (a + b > c && a + c > b && c + b > a) {
     console.log('НЕ могут являтся строронами треугольника')
 }; */
 
+const o = (d[1] ** 2 + d[2] ** 2 === d[0] ** 2 ? 'Удовлетворяют теореме Пифагора' : 'НЕ удовлетворяют теореме Пифагора');
+
 const t = (a + b > c && a + c > b && c + b > a ? 'Могут являтся строронами треугольника' : 'НЕ могут являтся строронами треугольника');
 
+console.log(o);
 
 console.log(t);
