@@ -1,78 +1,40 @@
 /* eslint-disable no-console */
 
-/* Task 1 */
 
-const x1 = 5;
+// заполнить и вывести массив 20 числами которые делятся на 3, или на 5, или на 15 
+const a = [];
 
-const y1 = 5;
+for (let i = 0; i < 80; i += 1)
+    if (i % 3 === 0 || i % 5 === 0 || i % 15 === 0) {
+        a.push(i);
+    };
 
-const z1 = 2;
+const b = a.slice(0, 20);
 
-const x2 = 7;
-
-const y2 = 9;
-
-const z2 = 4;
-
-const d1 = x2 - x1;
-
-const d2 = Math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2);
-
-const d3 = Math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2 + (z2 - z1) ** 2);
-
-console.log('Задание №1');
-
-console.log('Расстояние между точками на прямой:');
-
-console.log(d1);
-
-console.log('Расстояние между точками на плоскости:');
-
-console.log(d2);
-
-console.log('Расстояние между точками в трехмерном пространстве:');
-
-console.log(d3);
+console.log(b);
 
 
-/* Task 2 */
+// произведение всех элементов находящихся в каждой третьей позиции
+const c = b[2] * b[5] * b[8] * b[11] * b[14] * b[17];
 
-const a = 20;
+console.log(c);
 
-const b = 25;
 
-const c = 40;
+// среднее арифметическое всех чисел
+let sum = 0;
 
-const d = [a, b, c];
+for (i = 0; i < b.length; i += 1) {
+    sum += b[i];
+}
 
-// eslint-disable-next-line func-names
-d.sort(function (a, b) {
+const av = sum / b.length;
+
+console.log(av);
+
+
+// вывод наибольшего и наименьшего числа 
+b.sort(function (a, b) {
     return b - a
 });
 
-console.log('Задание №2 и №3');
-
-console.log('Отрезки с длинами:');
-
-console.log(a, b, c)
-
-/*  if (d[1] ** 2 + d[2] ** 2 === d[0] ** 2) {
-    console.log('Удовлетворяют теореме Пифагора')
-} else {
-    console.log('НЕ удовлетворяют теореме Пифагора')
-};  */
-
-/* вариант с if
-if (a + b > c && a + c > b && c + b > a) {
-    console.log('Могут являтся строронами треугольника')
-} else {
-    console.log('НЕ могут являтся строронами треугольника')
-}; */
-
-const o = (d[1] ** 2 + d[2] ** 2 === d[0] ** 2 ? 'Удовлетворяют теореме Пифагора' : 'НЕ удовлетворяют теореме Пифагора');
-
-const t = (a + b > c && a + c > b && c + b > a ? 'Могут являтся строронами треугольника' : 'НЕ могут являтся строронами треугольника');
-
-console.log(o);
-
-console.log(t);
+console.log(b[0], b[19]);

@@ -1,0 +1,8 @@
+{
+    "editor.fontLigatures": true,
+    "prettier.spaceBeforeFunctionParen": true,
+    "editor.formatOnType": true,
+    "typescript.format.insertSpaceAfterOpeningAndBeforeClosingJsxExpressionBraces": true,
+    "typescript.format.placeOpenBraceOnNewLineForControlBlocks": true,
+    "typescript.format.placeOpenBraceOnNewLineForFunctions": true
+}
