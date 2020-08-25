@@ -14,6 +14,7 @@ const b = a.slice(0, 20);
 console.log(b);
 
 
+
 // произведение всех элементов находящихся в каждой третьей позиции
 const c = b[2] * b[5] * b[8] * b[11] * b[14] * b[17];
 
@@ -32,9 +33,14 @@ const av = sum / b.length;
 console.log(av);
 
 
-// вывод наибольшего и наименьшего числа 
+// вывод наибольшего и наименьшего числа вариант 1
 b.sort(function (a, b) {
     return b - a
 });
 
 console.log(b[0], b[19]);
+
+// вывод наибольшего и наименьшего числа вариант 2
+console.log(Math.max.apply(null, b));
+
+console.log(Math.min.apply(null, b));
