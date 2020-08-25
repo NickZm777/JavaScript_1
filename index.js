@@ -1,46 +1,25 @@
 /* eslint-disable no-console */
 
+let x = 1;
 
-// заполнить и вывести массив 20 числами которые делятся на 3, или на 5, или на 15 
-const a = [];
+let y = 1;
 
-for (let i = 0; i < 80; i += 1)
-    if (i % 3 === 0 || i % 5 === 0 || i % 15 === 0) {
-        a.push(i);
-    };
-
-const b = a.slice(0, 20);
-
-console.log(b);
-
-
-
-// произведение всех элементов находящихся в каждой третьей позиции
-const c = b[2] * b[5] * b[8] * b[11] * b[14] * b[17];
-
-console.log(c);
-
-
-// среднее арифметическое всех чисел
-let sum = 0;
-
-for (i = 0; i < b.length; i += 1) {
-    sum += b[i];
+while (x !== 10) {
+    while (y !== 10) {
+        console.log(x * y);
+        y += 1;
+    }
+    x += 1;
+    y = 1;
 }
 
-const av = sum / b.length;
-
-console.log(av);
-
-
-// вывод наибольшего и наименьшего числа вариант 1
-b.sort(function (a, b) {
-    return b - a
-});
-
-console.log(b[0], b[19]);
-
-// вывод наибольшего и наименьшего числа вариант 2
-console.log(Math.max.apply(null, b));
-
-console.log(Math.min.apply(null, b));
+let q = "";
+for (let i = 1; i < 10; i++) {
+  for (let j = 1; j < 10; j++) {
+    q += j * i + " ";
+    if (j >= 9) {
+    q += ' \n';
+    }
+  }
+}
+console.log(q)
