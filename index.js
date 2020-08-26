@@ -14,8 +14,8 @@ while (x !== 10) {
 }
 
 let q = "";
-for (let i = 1; i < 10; i++) {
-  for (let j = 1; j < 10; j++) {
+for (let i = 1; i < 10; i+=1) {
+  for (let j = 1; j < 10; j+=1) {
     q += j * i + " ";
     if (j >= 9) {
     q += ' \n';
