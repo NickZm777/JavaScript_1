@@ -88,15 +88,9 @@ let num = 9
 let sum = 0
 for (let i = 1; i <= num; i += 1) {
   let res = (i * i)
-  // console.log(res)
   sum += res
-
-
 }
 console.log(sum)
-for (let i = num; i >= 0; i -= 1) {
-  // console.log(i * i)
-}
 
 
 console.log('************* Среднее геометрическое чисел вспомогательной диагонали ***************');
@@ -197,38 +191,28 @@ console.log(matrix[0][0])
 console.log('********** Минимальное и максимальное число стобцов матрицы *******')
 
 
-let total1 = [];
 for (let i = 0; i < 9; i += 1) {
+  let total1 = [];
   for (let j = 0; j < 9; j += 1) {
     total1.push(matrix[j][i])
-
   }
-
   console.log(total1[0])
 
   console.log(total1[total1.length - 1])
-
-  total1 = []
-
 }
 
 
 console.log('******** Максимальное и минимальное число строк матрицы *******')
 
 
-let total2 = [];
 for (let i = 0; i < 9; i += 1) {
+  let total2 = [];
   for (let j = 0; j < 9; j += 1) {
     total2.push(matrix[i][j])
-
   }
-
   console.log(total2[total2.length - 1])
 
   console.log(total2[0])
-
-  total2 = []
-
 }
 
 console.log('**** Сумма чисел в верхнем треугольнике относительно главной диагонали ****')
@@ -402,3 +386,224 @@ function minArrNumber(a) {
   return minNumber;
 }
 console.log(`Минимальное число массива: ${minArrNumber(array20)}`);
+
+
+
+function genmatrix(a, b, c) {
+  let matrix = [];
+  for (let i = a; i <= b; i += c) {
+    let row = [];
+    for (let j = a; j <= b; j += c) {
+      row.push(i * j)
+    }
+    matrix.push(row);
+  }
+  return matrix;
+}
+
+const matrix2 = genmatrix(1, 9, 1);
+
+console.log(matrix2)
+
+
+// **************************************
+
+function maxMinMatrix(a) {
+  let total = [];
+  for (let i = 0; i < 9; i += 1) {
+    for (let j = 0; j < 9; j += 1) {
+      total.push(a[i][j])
+    }
+  }
+  total.sort(function (a, b) {
+    return b - a
+  })
+  return `Максимальное число матрицы = ${total[0]}, минимальное число матрицы = ${total[total.length - 1]}`;
+}
+
+console.log(maxMinMatrix(matrix2))
+
+
+function maxMinColsMatrix(a) {
+
+  for (let i = 0; i < 9; i += 1) {
+    let total = [];
+    let total1 = [];
+    let count = 0;
+    for (let j = 0; j < 9; j += 1) {
+      total.push(a[j][i])
+      total1.push(a[i][j])
+    }
+    count += 1
+    return `Максимальное число столбца №${count} матрицы = ${total[total.length - 1]}, минимальное число столбца №${count} матрицы = ${total[0]}. 
+      Максимальное число строки №${count} матрицы = ${total1[total1.length - 1]}, минимальное число строки №${count} матрицы = ${total1[0]}`
+
+  }
+}
+
+console.log(maxMinColsMatrix(matrix2))
+
+
+
+
+function triangleSum3(a) {
+  let triangleSum = 0;
+
+  for (let i = 0; i < 9; i += 1) {
+    let sum = 0;
+    for (let j = i; j < 9; j += 1) {
+      sum += a[i][j];
+    }
+    triangleSum += sum;
+  }
+  return triangleSum;
+}
+
+console.log(`Сумма чисел в верхнем треугольнике относительно главной диагонали = ${triangleSum3(matrix2)}`)
+
+
+function triangleSum4(a) {
+  let triangleSum = 0;
+
+  for (let i = 0; i < 9; i += 1) {
+    let sum = 0;
+    for (let j = 8; j >= 8 - i; j -= 1) {
+      sum += a[i][j];
+    }
+    triangleSum += sum;
+  }
+  return triangleSum;
+}
+
+console.log(`Сумма чисел в нижнем треугольнике относительно вспомогательной диагонали = ${triangleSum4(matrix2)}`)
+
+
+
+
+
+
+console.log('************АНКЕТА************')
+
+let personArray = [{
+    name: 'Vasiliy',
+    surName: 'Ivanov',
+    sex: 'male',
+    age: 20,
+    education: 'high',
+    marriage: 'married',
+    employment: 'employed',
+    city: 'Minsk'
+
+  },
+  {
+    name: 'Alexander',
+    surName: 'Udelmeyer',
+    sex: 'male',
+    age: 25,
+    education: 'high',
+    marriage: 'married',
+    employment: 'unemployed',
+    city: 'Minsk'
+  },
+  {
+    name: 'Yulia',
+    surName: 'Goncharova',
+    sex: 'female',
+    age: 28,
+    education: 'high',
+    marriage: 'unmarried',
+    employment: 'employed',
+    city: 'Minsk'
+  },
+  {
+    name: 'Oksana',
+    surName: 'Lapteva',
+    sex: 'female',
+    age: 30,
+    education: 'middle',
+    marriage: 'married',
+    employment: 'employed',
+    city: 'Grodno'
+  },
+  {
+    name: 'Maksim',
+    surName: 'Lugovoy',
+    sex: 'male',
+    age: 48,
+    education: 'none',
+    marriage: 'unmarried',
+    employment: 'unemployed',
+    city: 'Vitebsk'
+  },
+  {
+    name: 'Anton',
+    surName: 'Kartsev',
+    sex: 'male',
+    age: 55,
+    education: 'middle',
+    marriage: 'married',
+    employment: 'unemployed',
+    city: 'Grodno'
+  },
+  {
+    name: 'Violetta',
+    surName: 'Sokolova',
+    sex: 'female',
+    age: 39,
+    education: 'low',
+    marriage: 'unmarried',
+    employment: 'employed',
+    city: 'Brest'
+  },
+  {
+    name: 'Inga',
+    surName: 'Dragunova',
+    sex: 'female',
+    age: 47,
+    education: 'middle',
+    marriage: 'married',
+    employment: 'unemployed',
+    city: 'Brest'
+  },
+  {
+    name: 'Leonid',
+    surName: 'Kaufmann',
+    sex: 'male',
+    age: 33,
+    education: 'high',
+    marriage: 'divorced',
+    employment: 'employed',
+    city: 'Gomel'
+  },
+  {
+    name: 'Ruslan',
+    surName: 'Shtrapnidze',
+    sex: 'male',
+    age: 41,
+    education: 'high',
+    marriage: 'divorced',
+    employment: 'unemployed',
+    city: 'Vitebsk'
+  },
+]
+
+console.log('Товарищи, кому за 30:');
+personArray.forEach((person) => {
+  if (person.age > 30) {
+    console.log(person.name, person.surName, person.age);
+  }
+})
+
+console.log('Состоящие в браке и проживающие в г.Минске:')
+personArray.forEach((person) => {
+  if (person.city === 'Minsk' && person.marriage === 'married') {
+    console.log(person.name, person.surName);
+  }
+})
+
+console.log('Безработные из г.Гродно:')
+personArray.forEach((person) => {
+  if (person.city === 'Grodno' && person.employment === 'unemployed') {
+    console.log(person.name, person.surName);
+  }
+})
