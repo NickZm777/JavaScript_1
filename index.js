@@ -607,3 +607,84 @@ personArray.forEach((person) => {
     console.log(person.name, person.surName);
   }
 })
+
+
+
+console.log('////////////////////////////////////////////////////////////')
+
+function getAge(birthDate) {
+  let age = Date.now() - birthDate
+  return realAge = Math.floor(age / 31557600000)
+}
+
+
+function agePeriod(age) {
+
+  if (age < 21) {
+    return 'young';
+  };
+  if (age >= 21 && age < 50) {
+    return 'middle-aged';
+  };
+  if (age >= 50) {
+    return 'old'
+  };
+}
+
+
+const genPerson = (LastN, firstN, middleN, birthDate, sex, age, city, employment, marriage, education) => ({
+  LastName: LastN,
+  FirstName: firstN,
+  MiddleName: middleN,
+  BirthDate: birthDate,
+  Sex: sex,
+  Age: age,
+  lifePeriod: agePeriod(new Date(age)),
+  CityResidence: city,
+  Employment: employment,
+  MarriageStatus: marriage,
+  EducationLevel: education,
+})
+
+
+
+
+const genPeople = () => {
+  return [
+    genPerson('Serov', 'Dmitriy', 'Ivanovich', new Date(1999, 5, 24), 'male', getAge(new Date(1999, 5, 24)), 'Grodno',
+      'unemployed', 'married', 'basic'),
+
+    genPerson('Guboshlep', 'Alexander', 'Grigorievich', new Date(1981, 4, 14), 'male', getAge(new Date(1981, 4, 14)), 'Gomel',
+      'employed', 'unmarried', 'middle'),
+
+    genPerson('Saskachevan', 'Robert', '-', new Date(1970, 1, 18), 'male', getAge(new Date(1970, 1, 18)), 'Mariampole',
+      'unemployed', 'unmarried', 'high'),
+
+    genPerson('Gureeva', 'Margarita', 'Maksimovna', new Date(1988, 9, 29), 'female', getAge(new Date(1988, 9, 29)), 'Minsk',
+      'employed', 'divorced', 'high'),
+
+    genPerson('Kaufmann', 'Kira', 'Boriovna', new Date(1991, 7, 12), 'female', getAge(new Date(1991, 7, 12)), 'Gdansk',
+      'employed', 'divorced', 'high'),
+
+    genPerson('Mikoyan', 'Vagit', 'Abdulvagitovich', new Date(1949, 6, 17), 'male', getAge(new Date(1949, 6, 17)), 'Moscow',
+      'unemployed', 'married', 'basic'),
+
+    genPerson('Chufgendthner', 'Miroslav', 'Miroslavovoch', new Date(1994, 8, 19), 'male', getAge(new Date(1994, 8, 19)), 'Brest',
+      'employed', 'unmarried', 'high'),
+
+    genPerson('Fadeeva', 'Marina', 'Antonovna', new Date(1969, 7, 30), 'female', getAge(new Date(1969, 7, 30)), 'St.Petersbrg',
+      'employed', 'married', 'middle'),
+
+    genPerson('Lee', 'ji', 'Sun', new Date(1977, 6, 26), 'male', getAge(new Date(1977, 6, 26)), 'Vladivostok',
+      'unemployed', 'married', 'basic'),
+
+    genPerson('Wadestin', 'Oleg', 'Pavlovich', new Date(1998, 7, 17), 'male', getAge(new Date(1998, 7, 17)), 'Brest',
+      'employed', 'unmarried', 'middle'),
+
+    genPerson('Nifigaka', 'Vysotaka', '-', new Date(1975, 3, 19), 'female', getAge(new Date(1975, 3, 19)), 'Osaka',
+      'employed', 'unmarried', 'middle')
+
+  ]
+}
+
+console.log(genPeople())
