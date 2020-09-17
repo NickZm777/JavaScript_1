@@ -612,7 +612,7 @@ personArray.forEach((person) => {
 
 console.log('////////////////////////////////////////////////////////////')
 
-function getAge(birthDate) {
+const age = function getAge(birthDate) {
   let age = Date.now() - birthDate
   return realAge = Math.floor(age / 31557600000)
 }
@@ -620,30 +620,29 @@ function getAge(birthDate) {
 
 function agePeriod(age) {
 
-  if (age < 21) {
+  if (age <= 21) {
     return 'young';
   };
-  if (age >= 21 && age < 50) {
+  if (age > 21 && age < 50) {
     return 'middle-aged';
   };
-  if (age >= 50) {
-    return 'old'
-  };
+  return 'old';
 }
 
 
-const genPerson = (LastN, firstN, middleN, birthDate, sex, age, city, employment, marriage, education) => ({
+const genPerson = (LastN, firstN, middleN, birthDate, sex, city, employment, marriage, education) => ({
   LastName: LastN,
   FirstName: firstN,
   MiddleName: middleN,
-  BirthDate: birthDate,
+  BirthDate: `${birthDate.getDate()}, ${birthDate.getMonth()+1}, ${birthDate.getFullYear()}`,
   Sex: sex,
-  Age: age,
-  lifePeriod: agePeriod(new Date(age)),
+  Age: age(birthDate),
+  lifePeriod: agePeriod(age(birthDate)),
   CityResidence: city,
   Employment: employment,
   MarriageStatus: marriage,
   EducationLevel: education,
+
 })
 
 
@@ -651,40 +650,71 @@ const genPerson = (LastN, firstN, middleN, birthDate, sex, age, city, employment
 
 const genPeople = () => {
   return [
-    genPerson('Serov', 'Dmitriy', 'Ivanovich', new Date(1999, 5, 24), 'male', getAge(new Date(1999, 5, 24)), 'Grodno',
+    genPerson('Serov', 'Dmitriy', 'Ivanovich', new Date(1985, 8, 20), 'male', 'Grodno',
       'unemployed', 'married', 'basic'),
 
-    genPerson('Guboshlep', 'Alexander', 'Grigorievich', new Date(1981, 4, 14), 'male', getAge(new Date(1981, 4, 14)), 'Gomel',
+    genPerson('Guboshlep', 'Alexander', 'Grigorievich', new Date(1981, 4, 14), 'male', 'Gomel',
       'employed', 'unmarried', 'middle'),
 
-    genPerson('Saskachevan', 'Robert', '-', new Date(1970, 1, 18), 'male', getAge(new Date(1970, 1, 18)), 'Mariampole',
+    genPerson('Saskachevan', 'Robert', '-', new Date(1970, 1, 18), 'male', 'Mariampole',
       'unemployed', 'unmarried', 'high'),
 
-    genPerson('Gureeva', 'Margarita', 'Maksimovna', new Date(1988, 9, 29), 'female', getAge(new Date(1988, 9, 29)), 'Minsk',
+    genPerson('Gureeva', 'Margarita', 'Maksimovna', new Date(1988, 9, 29), 'female', 'Minsk',
       'employed', 'divorced', 'high'),
 
-    genPerson('Kaufmann', 'Kira', 'Boriovna', new Date(1991, 7, 12), 'female', getAge(new Date(1991, 7, 12)), 'Gdansk',
+    genPerson('Kaufmann', 'Kira', 'Borisovna', new Date(1991, 7, 12), 'female', 'Gdansk',
       'employed', 'divorced', 'high'),
 
-    genPerson('Mikoyan', 'Vagit', 'Abdulvagitovich', new Date(1949, 6, 17), 'male', getAge(new Date(1949, 6, 17)), 'Moscow',
+    genPerson('Mikoyan', 'Vagit', 'Abdulvagitovich', new Date(1949, 6, 17), 'male', 'Moscow',
       'unemployed', 'married', 'basic'),
 
-    genPerson('Chufgendthner', 'Miroslav', 'Miroslavovoch', new Date(1994, 8, 19), 'male', getAge(new Date(1994, 8, 19)), 'Brest',
+    genPerson('Chufgendthner', 'Miroslav', 'Miroslavovoch', new Date(1994, 8, 19), 'male', 'Brest',
       'employed', 'unmarried', 'high'),
 
-    genPerson('Fadeeva', 'Marina', 'Antonovna', new Date(1969, 7, 30), 'female', getAge(new Date(1969, 7, 30)), 'St.Petersbrg',
+    genPerson('Fadeeva', 'Marina', 'Antonovna', new Date(1969, 7, 30), 'female', 'St.Petersbrg',
       'employed', 'married', 'middle'),
 
-    genPerson('Lee', 'ji', 'Sun', new Date(1977, 6, 26), 'male', getAge(new Date(1977, 6, 26)), 'Vladivostok',
+    genPerson('Lee', 'ji', 'Sun', new Date(1977, 6, 26), 'male', 'Vladivostok',
       'unemployed', 'married', 'basic'),
 
-    genPerson('Wadestin', 'Oleg', 'Pavlovich', new Date(1998, 7, 17), 'male', getAge(new Date(1998, 7, 17)), 'Brest',
+    genPerson('Vadestin', 'Oleg', 'Pavlovich', new Date(1998, 7, 17), 'male', 'Brest',
       'employed', 'unmarried', 'middle'),
 
-    genPerson('Nifigaka', 'Vysotaka', '-', new Date(1975, 3, 19), 'female', getAge(new Date(1975, 3, 19)), 'Osaka',
+    genPerson('Nifigaka', 'Vysotaka', '-', new Date(1975, 3, 19), 'female', 'Osaka',
       'employed', 'unmarried', 'middle')
-
   ]
 }
 
-console.log(genPeople())
+const people = genPeople();
+
+console.log(people)
+
+
+
+
+const mmAge = [];
+
+let ageSum = 0;
+
+for (let i = 0; i < people.length; i += 1) {
+
+  mmAge.push(people[i].Age);
+
+  ageSum += people[i].Age
+};
+let maxAge = Math.max.apply(null, mmAge);
+
+let minAge = Math.min.apply(null, mmAge);
+
+let midAge = ageSum / people.length;
+
+console.log(`Minimal age of persons is: ${minAge}, maximal age of persons is: ${maxAge} and middle age of this gang is: ${midAge}`);
+
+people.forEach((person) => {
+  if (person.Age === maxAge) {
+    console.log(`${person.FirstName} ${person.MiddleName} ${person.LastName} in the age of ${maxAge} is the oldest person`)
+  }
+  if (person.Age === minAge) {
+    console.log(`${person.FirstName} ${person.MiddleName} ${person.LastName} in the age of ${minAge} is the youngest person`)
+  }
+});
